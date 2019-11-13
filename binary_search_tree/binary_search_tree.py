@@ -11,47 +11,117 @@ class BinarySearchTree:
         self.right = None
 
     # Insert the given value into the tree
-    def insert(self, value):
-        pass
+    def insert(self, new_node):
+
+        if new_node < self.value:
+            print(new_node, 'new node <', self.value)
+
+            if self.left is None:
+                self.left = BinarySearchTree(new_node)
+
+            else:
+                self.left.insert(new_node)
+
+        else:
+            print(new_node, 'new node >', self.value)
+
+            if self.right is None:
+                self.right = BinarySearchTree(new_node)
+
+            else:
+                self.right.insert(new_node)
+
+
+
+
+
+
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        
+        if target == self.value:
+            return True
+        
+        elif target < self.value:
 
-    # Return the maximum value found in the tree
-    def get_max(self):
-        pass
+            if self.left is None:
+                return False
 
-    # Call the function `cb` on the value of each node
-    # You may use a recursive or iterative approach
-    def for_each(self, cb):
-        pass
+            else:
+                print(target, 'less then', self.value, 'moving left')
+                return self.left.contains(target)
 
-    # DAY 2 Project -----------------------
+        elif target > self.value:
 
-    # Print all the values in order from low to high
-    # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self, node):
-        pass
+            if self.right is None:
+                return False
 
-    # Print the value of every node, starting with the given node,
-    # in an iterative breadth first traversal
-    def bft_print(self, node):
-        pass
+            else:
+                print(target, 'greater then', self.value, 'moving right')
+                return self.right.contains(target)
 
-    # Print the value of every node, starting with the given node,
-    # in an iterative depth first traversal
-    def dft_print(self, node):
-        pass
 
-    # STRETCH Goals -------------------------
-    # Note: Research may be required
+test2 = BinarySearchTree(5)
 
-    # Print In-order recursive DFT
-    def pre_order_dft(self, node):
-        pass
+def test():
+    test2.insert(2)
+    test2.insert(3)
+    test2.insert(7)
+    test2.contains(4)
+print(test(), 'result')
 
-    # Print Post-order recursive DFT
-    def post_order_dft(self, node):
-        pass
+
+
+
+
+    # # Return the maximum value found in the tree
+    # def get_max(self):
+    #     pass
+
+    # # Call the function `cb` on the value of each node
+    # # You may use a recursive or iterative approach
+    # def for_each(self, cb):
+    #     pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # # DAY 2 Project -----------------------
+
+    # # Print all the values in order from low to high
+    # # Hint:  Use a recursive, depth first traversal
+    # def in_order_print(self, node):
+    #     pass
+
+    # # Print the value of every node, starting with the given node,
+    # # in an iterative breadth first traversal
+    # def bft_print(self, node):
+    #     pass
+
+    # # Print the value of every node, starting with the given node,
+    # # in an iterative depth first traversal
+    # def dft_print(self, node):
+    #     pass
+
+    # # STRETCH Goals -------------------------
+    # # Note: Research may be required
+
+    # # Print In-order recursive DFT
+    # def pre_order_dft(self, node):
+    #     pass
+
+    # # Print Post-order recursive DFT
+    # def post_order_dft(self, node):
+    #     pass

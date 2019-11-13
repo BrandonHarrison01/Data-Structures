@@ -14,7 +14,7 @@ class LRUCache:
         self.limit = limit
         self.size = 0
         self.list = DoublyLinkedList()
-        self.storage = {}
+        self.storage = dict()
 
     """
     Retrieves the value associated with the given key. Also
@@ -27,7 +27,8 @@ class LRUCache:
         if key in self.storage:
             node = self.storage[key]
             self.list.move_to_end(node)
-            return node.val[1]
+            print(self.storage)
+            return node.value[1]
         else:
             return None
 
@@ -42,17 +43,36 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        if key in self.storage[key]:
+        
+        if key in self.storage:
             node = self.storage[key]
-            node.val = (key, value)
+            node.value = (key, value)
             self.list.move_to_end(node)
             return
 
         if self.size == self.limit:
-            del self.storage[self.list.head.val[0]]
+            del self.storage[self.list.head.value[0]]
             self.list.remove_from_head()
             self.size -= 1
 
         self.list.add_to_tail((key, value))
         self.storage[key] = self.list.tail
         self.size += 1
+
+
+
+
+
+
+
+
+
+
+
+
+LRUCache(3).set('item1', 'a')
+# LRUCache(3).set('item2', 'b')
+# LRUCache(3).set('item3', 'c')
+
+
+print(LRUCache(3).get('item1'))
