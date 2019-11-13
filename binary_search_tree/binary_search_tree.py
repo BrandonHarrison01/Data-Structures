@@ -1,7 +1,7 @@
-import sys
-sys.path.append('../queue_and_stack')
-from dll_queue import Queue
-from dll_stack import Stack
+# import sys
+# sys.path.append('../queue_and_stack')
+# from dll_queue import Queue
+# from dll_stack import Stack
 
 
 class BinarySearchTree:
@@ -14,7 +14,7 @@ class BinarySearchTree:
     def insert(self, new_node):
 
         if new_node < self.value:
-            print(new_node, 'new node <', self.value)
+            # print(new_node, 'new node <', self.value)
 
             if self.left is None:
                 self.left = BinarySearchTree(new_node)
@@ -23,18 +23,13 @@ class BinarySearchTree:
                 self.left.insert(new_node)
 
         else:
-            print(new_node, 'new node >', self.value)
+            # print(new_node, 'new node >', self.value)
 
             if self.right is None:
                 self.right = BinarySearchTree(new_node)
 
             else:
                 self.right.insert(new_node)
-
-
-
-
-
 
 
     # Return True if the tree contains the value
@@ -50,7 +45,7 @@ class BinarySearchTree:
                 return False
 
             else:
-                print(target, 'less then', self.value, 'moving left')
+                # print(target, 'less then', self.value, 'moving left')
                 return self.left.contains(target)
 
         elif target > self.value:
@@ -59,33 +54,59 @@ class BinarySearchTree:
                 return False
 
             else:
-                print(target, 'greater then', self.value, 'moving right')
+                # print(target, 'greater then', self.value, 'moving right')
                 return self.right.contains(target)
+
+
+    # Return the maximum value found in the tree
+    def get_max(self):
+        
+        if self.right is None:
+            return self.value
+        else:
+            # print(self.value, 'can move right')
+            return self.right.get_max()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # Call the function `cb` on the value of each node
+    # You may use a recursive or iterative approach
+    def for_each(self, cb):
+        pass
+
+
+
+
+
+
+
+
 
 
 test2 = BinarySearchTree(5)
 
-def test():
-    test2.insert(2)
-    test2.insert(3)
-    test2.insert(7)
-    test2.contains(4)
-print(test(), 'result')
-
-
-
-
-
-    # # Return the maximum value found in the tree
-    # def get_max(self):
-    #     pass
-
-    # # Call the function `cb` on the value of each node
-    # # You may use a recursive or iterative approach
-    # def for_each(self, cb):
-    #     pass
-
-
+# def test():
+#     test2.insert(2)
+#     test2.insert(3)
+#     test2.insert(7)
+#     test2.insert(6)
+#     test2.insert(2)
+#     test2.insert(10)
+# #     test2.contains(4)
+#     test2.get_max()
+# print(test(), 'result')
 
 
 
