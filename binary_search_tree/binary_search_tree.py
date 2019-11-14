@@ -81,26 +81,50 @@ class BinarySearchTree:
             self.right.for_each(cb)
 
 
-test2 = BinarySearchTree(5)
-
-# def test():
-#     test2.insert(2)
-#     test2.insert(3)
-#     test2.insert(7)
-#     test2.insert(6)
-#     test2.insert(2)
-#     test2.insert(10)
-# #     test2.contains(4)
-#     test2.get_max()
-# print(test(), 'result')
-
-
     # # DAY 2 Project -----------------------
 
-    # # Print all the values in order from low to high
-    # # Hint:  Use a recursive, depth first traversal
-    # def in_order_print(self, node):
-    #     pass
+
+
+
+
+
+    # Print all the values in order from low to high
+    # Hint:  Use a recursive, depth first traversal
+    def in_order_print(self, node):
+            if node is None:
+                return
+
+            self.in_order_print(node.left) 
+            print(node.value)
+            self.in_order_print(node.right)
+
+                    
+
+
+
+
+
+
+
+
+test2 = BinarySearchTree(5)
+
+def test():
+    test2.insert(2)
+    test2.insert(3)
+    test2.insert(7)
+    test2.insert(1)
+    test2.insert(8)
+    test2.insert(9)
+    test2.in_order_print(test2)
+
+print(test(), 'result')
+
+
+
+
+
+
 
     # # Print the value of every node, starting with the given node,
     # # in an iterative breadth first traversal
