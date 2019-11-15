@@ -1,7 +1,7 @@
-# import sys
-# sys.path.append('../queue_and_stack')
-# from dll_queue import Queue
-# from dll_stack import Stack
+import sys
+sys.path.append('../queue_and_stack')
+from dll_queue import Queue
+from dll_stack import Stack
 
 
 class BinarySearchTree:
@@ -84,10 +84,6 @@ class BinarySearchTree:
     # # DAY 2 Project -----------------------
 
 
-
-
-
-
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
@@ -98,43 +94,57 @@ class BinarySearchTree:
             print(node.value)
             self.in_order_print(node.right)
 
-                    
+
+    # Print the value of every node, starting with the given node,
+    # in an iterative breadth first traversal
+    def bft_print(self, node):
+        
+        self.queue = Queue()
+        self.queue.enqueue(node)
+
+        while self.queue.size:
+            node = self.queue.dequeue()
+            print(node.value)
+            if node.left:
+                self.queue.enqueue(node.left)
+            if node.right:
+                self.queue.enqueue(node.right)
+
+
+    # Print the value of every node, starting with the given node,
+    # in an iterative depth first traversal
+    def dft_print(self, node):
+
+        self.stack = Stack()
+        self.stack.push(node)
+
+        while self.stack.size:
+            node = self.stack.pop()
+            print(node.value)
+            if node.left:
+                self.stack.push(node.left)
+            if node.right:
+                self.stack.push(node.right)
+
+
+# test2 = BinarySearchTree(5)
+
+# def test():
+#     test2.insert(2)
+#     test2.insert(3)
+#     test2.insert(7)
+#     test2.insert(1)
+#     test2.insert(8)
+#     test2.insert(9)
+#     test2.bft_print(test2)
+
+# print(test(), 'result')
 
 
 
 
 
 
-
-
-test2 = BinarySearchTree(5)
-
-def test():
-    test2.insert(2)
-    test2.insert(3)
-    test2.insert(7)
-    test2.insert(1)
-    test2.insert(8)
-    test2.insert(9)
-    test2.in_order_print(test2)
-
-print(test(), 'result')
-
-
-
-
-
-
-
-    # # Print the value of every node, starting with the given node,
-    # # in an iterative breadth first traversal
-    # def bft_print(self, node):
-    #     pass
-
-    # # Print the value of every node, starting with the given node,
-    # # in an iterative depth first traversal
-    # def dft_print(self, node):
-    #     pass
 
     # # STRETCH Goals -------------------------
     # # Note: Research may be required
